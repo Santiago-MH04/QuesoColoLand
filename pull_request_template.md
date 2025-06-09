@@ -13,7 +13,7 @@ Select the most suited option:
 - [ ] 🔧 Refactors
 - [ ] 🚀 Others (specify)
 
-## 🚨 ¿Cómo se ha probado?
+## 🚨 How’s been tested?
 Details the tests that have been made in order to guarantee that the changes work properly.
 
 ## 📝 Related Jira Ticket
