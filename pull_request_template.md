@@ -4,7 +4,7 @@
 Here, you can find the instructions on how to fill a pull request on GitHub for future tasks completion;
 
 ## ✅ Change type
-Selecciona la opción que mejor describa tu contribución:
+Select the most suited option:
 
 - [ ] 🐛 Error fixing
 - [ ] ✨ New feature
