@@ -28,6 +28,6 @@ Details the tests that have been made in order to guarantee that the changes wor
     - _List of PRs..._
 - [ ] No, this PR stands on its own.
 
-## 🎯 Notas adicionales
-Agrega cualquier información adicional que consideres importante.
+## 🎯 Additional notes
+Add any piece of futher infomation you consider relevant.
 
