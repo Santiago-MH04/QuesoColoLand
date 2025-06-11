@@ -20,6 +20,7 @@ public class AttractionDTO {
     private int capacity;
     private LocalDateTime lastUpdate;
 
+
     //Constructores de AttractionDTO
     //Asignadores de atributos de AttractionDTO (setters)
     //Lectores de atributos de AttractionDTO (getters)
