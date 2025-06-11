@@ -12,17 +12,15 @@ import java.util.Optional;
 
 @Service
 public class AttractionServiceImpl implements AttractionService{
-        //Atributos de AttractionServiceImpl
+        //Fields of AttractionServiceImpl
     private final AttractionRepository repoAttraction;
 
-        //Constructores de AttractionServiceImpl
+        //Constructors of AttractionServiceImpl
     public AttractionServiceImpl(AttractionRepository repoAttraction) {
         this.repoAttraction = repoAttraction;
     }
 
-    //Asignadores de atributos de AttractionServiceImpl (setters)
-    //Lectores de atributos de AttractionServiceImpl (getters)
-        //Métodos de AttractionServiceImpl
+        //Methods de AttractionServiceImpl
     @Override
     @Transactional(readOnly = true)
     public List<AttractionDTO> findAll() {
