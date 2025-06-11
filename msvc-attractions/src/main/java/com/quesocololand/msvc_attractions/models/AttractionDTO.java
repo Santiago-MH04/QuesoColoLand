@@ -15,15 +15,15 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class AttractionDTO {
-        //Atributos de AttractionDTO
+        //Fields of AttractionDTO
+    private LocalDateTime lastUpdate;
     private String id;
     private String name;
     private AttractionStatus status;
     private int capacity;
-    private LocalDateTime lastUpdate;
 
-    //Constructores de AttractionDTO
-    //Asignadores de atributos de AttractionDTO (setters)
-    //Lectores de atributos de AttractionDTO (getters)
-    //Métodos de AttractionDTO
+    //Constructors of AttractionDTO
+    //Field setters of AttractionDTO (setters)
+    //Field getters of AttractionDTO (getters)
+    //Methods de AttractionDTO
 }
