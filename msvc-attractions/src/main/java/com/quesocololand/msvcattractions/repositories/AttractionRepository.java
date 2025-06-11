@@ -1,6 +1,6 @@
-package com.quesocololand.msvc_attractions.repositories;
+package com.quesocololand.msvcattractions.repositories;
 
-import com.quesocololand.msvc_attractions.models.Attraction;
+import com.quesocololand.msvcattractions.models.Attraction;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface AttractionRepository extends MongoRepository<Attraction, String> {

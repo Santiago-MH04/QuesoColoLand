@@ -1,12 +1,10 @@
-package com.quesocololand.msvc_attractions.models;
+package com.quesocololand.msvcattractions.models.dto;
 
-import com.quesocololand.msvc_attractions.models.utils.AttractionStatus;
+import com.quesocololand.msvcattractions.models.utils.AttractionStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 
