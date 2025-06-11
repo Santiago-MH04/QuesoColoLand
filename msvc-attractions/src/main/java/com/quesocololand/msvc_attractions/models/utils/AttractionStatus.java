@@ -8,8 +8,8 @@ public enum AttractionStatus {
     INACTIVE,
     MAINTENANCE;
 
-    //Atributos de AttractionStatus
-    //Constructores de AttractionStatus
-    //Lectores de atributos de AttractionStatus (getters)
-    //Métodos de AttractionStatus
+    //Fields of AttractionStatus
+    //Constructors of AttractionStatus
+    //Getters of AttractionStatus
+    //Methods de AttractionStatus
 }

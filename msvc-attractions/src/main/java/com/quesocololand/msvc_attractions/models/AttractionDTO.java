@@ -16,11 +16,11 @@ import java.time.LocalDateTime;
 @Builder
 public class AttractionDTO {
         //Fields of AttractionDTO
-    private LocalDateTime lastUpdate;
     private String id;
     private String name;
     private AttractionStatus status;
     private int capacity;
+    private LocalDateTime lastUpdate;
 
     //Constructors of AttractionDTO
     //Field setters of AttractionDTO (setters)
