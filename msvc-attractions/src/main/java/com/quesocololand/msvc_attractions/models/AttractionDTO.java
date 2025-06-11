@@ -23,7 +23,7 @@ public class AttractionDTO {
     private LocalDateTime lastUpdate;
 
     //Constructors of AttractionDTO
-    //Setters of AttractionDTO
-    //Getters of AttractionDTO
+    //Field setters of AttractionDTO (setters)
+    //Field getters of AttractionDTO (getters)
     //Methods de AttractionDTO
 }
