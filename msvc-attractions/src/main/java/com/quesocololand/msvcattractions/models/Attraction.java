@@ -32,6 +32,9 @@ public class Attraction {
     //Lectores de atributos de Attraction (getters)
         //Métodos de Attraction
     public void preUpdate(){
-        this.lastUpdate = LocalDateTime.now();
+            //To make sure it only applies to updates
+        if (this.id != null) {
+            this.lastUpdate = LocalDateTime.now();
+        }
     }
 }

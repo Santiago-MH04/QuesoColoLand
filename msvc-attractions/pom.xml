@@ -33,6 +33,8 @@
 	<properties>
 		<java.version>23</java.version>
 		<spring-cloud.version>2025.0.0</spring-cloud.version>
+		<project-lombok.version>1.18.38</project-lombok.version>
+		<mapstruct.version>1.6.3</mapstruct.version>
 	</properties>
 
 	<dependencies>
@@ -55,9 +57,10 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
+			<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>${project-lombok.version}</version>
 		</dependency>
 			<!--Testing dependencies-->
 		<dependency>
@@ -68,6 +71,13 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
+		</dependency>
+			<!--Mapstruct-->
+		<dependency>
+			<!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
 		</dependency>
 			<!--Environment variables configuration-->
 		<dependency>
@@ -103,19 +113,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</path>
-					</annotationProcessorPaths>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
@@ -123,12 +120,36 @@
 						<exclude>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+							<version>${project-lombok.version}</version>
 						</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${mapstruct.version}</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${project-lombok.version}</version>
+						</path>
+						<path>
+							<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-mapstruct-binding -->
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok-mapstruct-binding</artifactId>
+							<version>0.2.0</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
 		</plugins>
-
 	</build>
-
 </project>

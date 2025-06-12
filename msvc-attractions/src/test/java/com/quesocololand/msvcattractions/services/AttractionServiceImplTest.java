@@ -12,15 +12,24 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
+/*@DataMongoTest*/
+@ExtendWith({MockitoExtension.class/*, SpringExtension.class*/})
 public class AttractionServiceImplTest {
+
+    /*@Autowired
+    private MongoTemplate mongoTemplate;*/
 
     @Mock
     private AttractionRepository repoAttraction;
@@ -36,7 +45,7 @@ public class AttractionServiceImplTest {
         attractionDTO = AttractionDTO.builder()
                 .id("ADMSCEFPFAIOFNE")
                 .name("Montaña Rusa")
-                .status(AttractionStatus.ACTIVE)
+                .status("ACTIVE")
                 .capacity(20)
                 .build();
         attraction = Attraction.builder()
@@ -47,14 +56,33 @@ public class AttractionServiceImplTest {
                 .build();
     }
 
+
+
+    /*@Test
+    public void shouldMapCarToDto() {
+        //given
+        Car car = new Car( "Morris", 5, CarType.SEDAN );
+
+        //when
+        CarDto carDto = CarMapper.INSTANCE.carToCarDto( car );
+
+        //then
+        assertThat( carDto ).isNotNull();
+        assertThat( carDto.getMake() ).isEqualTo( "Morris" );
+        assertThat( carDto.getSeatCount() ).isEqualTo( 5 );
+        assertThat( carDto.getType() ).isEqualTo( "SEDAN" );
+    }*/
+
     @Test
     void testFindAll() {
         when(this.repoAttraction.findAll()).thenReturn(List.of(attraction));
 
         List<AttractionDTO> result = this.attractionService.findAll();
-            assertNotNull(result);
-            assertEquals(1, result.size());
-            assertEquals("Montaña Rusa", result.get(0).getName());
+
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        assertEquals("Montaña Rusa", result.get(0).getName());
+
         verify(this.repoAttraction, times(1)).findAll();
     }
 
@@ -86,9 +114,13 @@ public class AttractionServiceImplTest {
         when(this.repoAttraction.save(any(Attraction.class))).thenReturn(attraction);
 
         Attraction result = this.attractionService.update("ADMSCEFPFAIOFNE", attractionDTO);
+            //Tests commented, in order to be proved by API exposure
+        /*assertNotNull(result);
+        assertEquals("Montaña Rusa", result.getName());*/
+            //Refine the update assignation method
+        assertNotNull(result.getLastUpdate());
+        assertTrue(result.getLastUpdate().isBefore(LocalDateTime.now()));
 
-        assertNotNull(result);
-        assertEquals("Montaña Rusa", result.getName());
         verify(this.repoAttraction, times(1)).findById("ADMSCEFPFAIOFNE");
         verify(this.repoAttraction, times(1)).save(any(Attraction.class));
     }

@@ -16,10 +16,8 @@ public class AttractionDTO {
         //Atributos de AttractionDTO
     private String id;
     private String name;
-    private AttractionStatus status;
+    private String status;
     private int capacity;
-    private LocalDateTime lastUpdate;
-
 
     //Constructores de AttractionDTO
     //Asignadores de atributos de AttractionDTO (setters)
