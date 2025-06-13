@@ -1,6 +1,6 @@
-package com.quesocololand.msvc_attractions.models;
+package com.quesocololand.msvcattractions.models;
 
-import com.quesocololand.msvc_attractions.models.utils.AttractionStatus;
+import com.quesocololand.msvcattractions.models.utils.AttractionStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class Attraction {
+        //Atributos de Attraction
     @Id
     @Field(name="_id")
     private String id;
@@ -25,4 +26,15 @@ public class Attraction {
     private int capacity;
     @Field(name="last_update")
     private LocalDateTime lastUpdate;
+    
+    //Constructores de Attraction
+    //Asignadores de atributos de Attraction (setters)
+    //Lectores de atributos de Attraction (getters)
+        //Métodos de Attraction
+    public void preUpdate(){
+            //To make sure it only applies to updates
+        if (this.id != null) {
+            this.lastUpdate = LocalDateTime.now();
+        }
+    }
 }
