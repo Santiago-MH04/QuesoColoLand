@@ -3,6 +3,7 @@ package com.quesocololand.msvcattractions.services;
 import com.quesocololand.msvcattractions.exceptions.AttractionPersistenceException;
 import com.quesocololand.msvcattractions.models.Attraction;
 import com.quesocololand.msvcattractions.models.dto.AttractionDTO;
+import com.quesocololand.msvcattractions.models.mapper.AttractionMapper;
 import com.quesocololand.msvcattractions.models.utils.AttractionStatus;
 import com.quesocololand.msvcattractions.repositories.AttractionRepository;
 
@@ -21,6 +22,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -56,22 +58,25 @@ public class AttractionServiceImplTest {
                 .build();
     }
 
+    @Test
+    public void shouldMapAttractionToDto() {
+        AttractionDTO attractionDTO = AttractionMapper.INSTANCE.toDTO(attraction);
 
+        assertNotNull(attractionDTO);
+        assertEquals("Montaña Rusa", attractionDTO.getName());
+        assertEquals( 20, attractionDTO.getCapacity());
+        assertEquals(String.valueOf(AttractionStatus.ACTIVE), attractionDTO.getStatus());
+    }
 
-    /*@Test
-    public void shouldMapCarToDto() {
-        //given
-        Car car = new Car( "Morris", 5, CarType.SEDAN );
+    @Test
+    public void shouldMapDTOToAttraction() {
+        Attraction attractionMap = AttractionMapper.INSTANCE.toAttraction(attractionDTO);
 
-        //when
-        CarDto carDto = CarMapper.INSTANCE.carToCarDto( car );
-
-        //then
-        assertThat( carDto ).isNotNull();
-        assertThat( carDto.getMake() ).isEqualTo( "Morris" );
-        assertThat( carDto.getSeatCount() ).isEqualTo( 5 );
-        assertThat( carDto.getType() ).isEqualTo( "SEDAN" );
-    }*/
+        assertNotNull(attractionMap);
+        assertEquals("Montaña Rusa", attractionMap.getName());
+        assertEquals( 20, attractionMap.getCapacity());
+        assertEquals(String.valueOf(attractionMap.getStatus()), String.valueOf(AttractionStatus.ACTIVE));
+    }
 
     @Test
     void testFindAll() {
