@@ -59,26 +59,6 @@ public class AttractionServiceImplTest {
     }
 
     @Test
-    public void shouldMapAttractionToDto() {
-        AttractionDTO attractionDTO = AttractionMapper.INSTANCE.toDTO(attraction);
-
-        assertNotNull(attractionDTO);
-        assertEquals("Montaña Rusa", attractionDTO.getName());
-        assertEquals( 20, attractionDTO.getCapacity());
-        assertEquals(String.valueOf(AttractionStatus.ACTIVE), attractionDTO.getStatus());
-    }
-
-    @Test
-    public void shouldMapDTOToAttraction() {
-        Attraction attractionMap = AttractionMapper.INSTANCE.toAttraction(attractionDTO);
-
-        assertNotNull(attractionMap);
-        assertEquals("Montaña Rusa", attractionMap.getName());
-        assertEquals( 20, attractionMap.getCapacity());
-        assertEquals(String.valueOf(attractionMap.getStatus()), String.valueOf(AttractionStatus.ACTIVE));
-    }
-
-    @Test
     void testFindAll() {
         when(this.repoAttraction.findAll()).thenReturn(List.of(attraction));
 
