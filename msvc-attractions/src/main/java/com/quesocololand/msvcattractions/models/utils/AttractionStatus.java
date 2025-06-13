@@ -1,4 +1,4 @@
-package com.quesocololand.msvc_attractions.models.utils;
+package com.quesocololand.msvcattractions.models.utils;
 
 import lombok.Getter;
 
