@@ -41,11 +41,11 @@ class AttractionMapperTest {
 
     @Test
     void toDTO() {
-        AttractionDTO attractionDTO = AttractionMapper.INSTANCE.toDTO(attraction);
+        AttractionDTO attractionDTOMap= AttractionMapper.INSTANCE.toDTO(attraction);
 
-        assertNotNull(attractionDTO);
-        assertEquals("Montaña Rusa", attractionDTO.getName());
-        assertEquals( 20, attractionDTO.getCapacity());
-        assertEquals(String.valueOf(AttractionStatus.ACTIVE), attractionDTO.getStatus());
+        assertNotNull(attractionDTOMap);
+        assertEquals("Montaña Rusa", attractionDTOMap.getName());
+        assertEquals( 20, attractionDTOMap.getCapacity());
+        assertEquals(String.valueOf(AttractionStatus.ACTIVE), attractionDTOMap.getStatus());
     }
 }
