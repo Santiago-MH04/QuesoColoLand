@@ -29,4 +29,11 @@ public class AttractionController {
     public List<AttractionDTO> findAll(){
         return this.attractionService.findAll();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<AttractionDTO> findById(@PathVariable String id){
+        return this.attractionService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> new AttractionNotFoundException("Attraction not found at our amusement park"));
+    }
 }
