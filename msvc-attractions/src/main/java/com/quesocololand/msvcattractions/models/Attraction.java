@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class Attraction {
-        //Atributos de Attraction
+        //Fields of Attraction
     @Id
     @Field(name="_id")
     private String id;
@@ -26,11 +26,11 @@ public class Attraction {
     private int capacity;
     @Field(name="last_update")
     private LocalDateTime lastUpdate;
-    
-    //Constructores de Attraction
-    //Asignadores de atributos de Attraction (setters)
-    //Lectores de atributos de Attraction (getters)
-        //Métodos de Attraction
+
+    //Constructors of Attraction
+    //Field setters of Attraction (setters)
+    //Field getters of Attraction (getters)
+        //Methods of Attraction
     public void preUpdate(){
             //To make sure it only applies to updates
         if (this.id != null) {

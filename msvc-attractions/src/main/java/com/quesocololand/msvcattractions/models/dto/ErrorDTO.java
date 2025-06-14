@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @Builder
-public class Error {
+public class ErrorDTO {
         //Atributos de Error
     private String name;
     private String message;
