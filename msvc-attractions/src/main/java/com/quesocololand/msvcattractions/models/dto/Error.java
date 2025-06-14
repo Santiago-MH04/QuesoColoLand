@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class Error {
-        //Atributos de Error
+        //Fields of Error
     private String name;
     private String message;
     private int httpStatus;
     private LocalDateTime timestamp;
 
-    //Constructores de Error
-    //Asignadores de atributos de Error (setters)
-    //Lectores de atributos de Error (getters)
-    //Métodos de Error
+    //Constructors of Error
+    //Field setters of Error (setters)
+    //Field getters of Error (getters)
+    //Methods of Error
 }

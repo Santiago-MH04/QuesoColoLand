@@ -21,7 +21,7 @@ public class AttractionServiceImpl implements AttractionService{
         this.repoAttraction = repoAttraction;
     }
 
-        //Methods de AttractionServiceImpl
+        //Methods of AttractionServiceImpl
     @Override
     @Transactional(readOnly = true)
     public List<AttractionDTO> findAll() {
