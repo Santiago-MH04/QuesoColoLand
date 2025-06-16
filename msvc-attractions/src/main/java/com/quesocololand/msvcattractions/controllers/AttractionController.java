@@ -1,13 +1,12 @@
 package com.quesocololand.msvcattractions.controllers;
 
 import com.quesocololand.msvcattractions.exceptions.AttractionNotFoundException;
+import com.quesocololand.msvcattractions.models.Attraction;
 import com.quesocololand.msvcattractions.models.dto.AttractionDTO;
 import com.quesocololand.msvcattractions.services.AttractionService;
-import com.quesocololand.msvcattractions.services.ValidationErrorsHandlerService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,12 +16,10 @@ import java.util.List;
 public class AttractionController {
         //Fields of AttractionController
     private final AttractionService attractionService;
-    private final ValidationErrorsHandlerService errorsHandlerService;
 
         //Constructors of AttractionController
-    public AttractionController(AttractionService attractionService, ValidationErrorsHandlerService errorsHandlerService) {
+    public AttractionController(AttractionService attractionService) {
         this.attractionService = attractionService;
-        this.errorsHandlerService = errorsHandlerService;
     }
 
     //Field setters of AttractionController (setters)
@@ -39,24 +36,18 @@ public class AttractionController {
         return this.attractionService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() -> new AttractionNotFoundException("Attraction not found at our amusement park"));
-                /*.orElseThrow();*/
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@Valid @RequestBody AttractionDTO attractionDTO, BindingResult result){
-        if (result.hasErrors()) {
-            return this.errorsHandlerService.handleValidationErrors(result);
-        }
-
+    public ResponseEntity<Attraction> create(@Valid @RequestBody AttractionDTO attractionDTO) {
+            //In case it fails validation, it throws a MethodArgumentNotValidException
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(this.attractionService.create(attractionDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@Valid @RequestBody AttractionDTO attractionDTO, BindingResult result, @PathVariable String id){
-        if (result.hasErrors()) {
-            return this.errorsHandlerService.handleValidationErrors(result);
-        }
+    public ResponseEntity<Attraction> update(@Valid @RequestBody AttractionDTO attractionDTO, @PathVariable String id) {
+            //In case it fails validation, it throws a MethodArgumentNotValidException
         return ResponseEntity.ok(this.attractionService.update(id, attractionDTO));
     }
 
