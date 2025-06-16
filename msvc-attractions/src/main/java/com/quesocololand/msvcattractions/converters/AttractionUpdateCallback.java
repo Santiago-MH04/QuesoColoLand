@@ -18,18 +18,3 @@ public class AttractionUpdateCallback implements BeforeConvertCallback<Attractio
         return attraction;
     }
 }
-/*@Component
-public class AttractionUpdateCallback extends AbstractMongoEventListener<Attraction> {
-    //Fields of AttractionEventListener
-    //Constructors of AttractionEventListener
-    //Field setters of AttractionEventListener (setters)
-    //Field getters of AttractionEventListener (getters)
-        //Methods of AttractionEventListener
-    @Override
-    public void onBeforeSave(BeforeSaveEvent<Attraction> event) {
-        Attraction attraction = event.getSource();
-        attraction.preUpdate();
-            *//*attraction.setUpdatedAt(Instant.now().toEpochMilli());*//* // Simula @PreUpdate
-        super.onBeforeSave(event);
-    }
-}*/
