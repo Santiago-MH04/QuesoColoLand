@@ -1,12 +1,10 @@
-package com.quesocololand.msvcattractions.listeners;
+package com.quesocololand.msvcattractions.converters;
 
 import com.quesocololand.msvcattractions.models.Attraction;
-import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
 import org.springframework.data.mongodb.core.mapping.event.BeforeConvertCallback;
-import org.springframework.data.mongodb.core.mapping.event.BeforeSaveEvent;
 import org.springframework.stereotype.Component;
 
-/*@Component
+@Component
 public class AttractionUpdateCallback implements BeforeConvertCallback<Attraction> {
     //Fields of AttractionEventListener
     //Constructors of AttractionEventListener
@@ -19,8 +17,8 @@ public class AttractionUpdateCallback implements BeforeConvertCallback<Attractio
         attraction.preUpdate();
         return attraction;
     }
-}*/
-@Component
+}
+/*@Component
 public class AttractionUpdateCallback extends AbstractMongoEventListener<Attraction> {
     //Fields of AttractionEventListener
     //Constructors of AttractionEventListener
@@ -31,7 +29,7 @@ public class AttractionUpdateCallback extends AbstractMongoEventListener<Attract
     public void onBeforeSave(BeforeSaveEvent<Attraction> event) {
         Attraction attraction = event.getSource();
         attraction.preUpdate();
-            /*attraction.setUpdatedAt(Instant.now().toEpochMilli());*/ // Simula @PreUpdate
+            *//*attraction.setUpdatedAt(Instant.now().toEpochMilli());*//* // Simula @PreUpdate
         super.onBeforeSave(event);
     }
-}
+}*/

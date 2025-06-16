@@ -1,7 +1,6 @@
 package com.quesocololand.msvcattractions.controllers;
 
 import com.quesocololand.msvcattractions.exceptions.AttractionNotFoundException;
-import com.quesocololand.msvcattractions.models.Attraction;
 import com.quesocololand.msvcattractions.models.dto.AttractionDTO;
 import com.quesocololand.msvcattractions.services.AttractionService;
 import com.quesocololand.msvcattractions.services.ValidationErrorsHandlerService;
@@ -64,6 +63,7 @@ public class AttractionController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id) {
         if(this.attractionService.findById(id).isPresent()){
+            this.attractionService.deleteById(id);
             return ResponseEntity.noContent().build(); // Returns 204 No Content
         }
         throw new AttractionNotFoundException("Attraction not found at our amusement park. No deletion possible");

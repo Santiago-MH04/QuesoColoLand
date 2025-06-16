@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -15,6 +17,7 @@ public class AttractionDTO {
     private String name;
     private String status;
     private int capacity;
+    private LocalDateTime lastUpdate;
 
     //Constructors of AttractionDTO
     //Field setters of AttractionDTO (setters)

@@ -25,12 +25,13 @@ public class ValidationErrorsHandlerService {
         Map<String, String> errors = new HashMap<>();
             errors.put("name", "database saving error");
             errors.put("message", "there were issues saving some fields");
-            errors.put("status", "400");
-            errors.put("timestamp", formattedTimestamp);
 
         for (FieldError error : result.getFieldErrors()) {
             errors.put(error.getField(), error.getDefaultMessage());
         }
+
+            errors.put("status", "400");
+            errors.put("timestamp", formattedTimestamp);
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }

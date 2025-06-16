@@ -1,5 +1,6 @@
 package com.quesocololand.msvcattractions.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.quesocololand.msvcattractions.models.utils.AttractionStatus;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 
 import java.time.LocalDateTime;
 
@@ -36,7 +38,8 @@ public class Attraction {
     @Min(value = 10, message = "each attraction must be capable to handle minimum 10 people")
     private int capacity;
 
-    @Field(name="last_update")
+    @Field(name = "last_update", targetType = FieldType.DATE_TIME)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private LocalDateTime lastUpdate;
 
     //Constructors of Attraction

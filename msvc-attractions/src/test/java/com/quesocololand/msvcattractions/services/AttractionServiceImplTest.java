@@ -117,10 +117,10 @@ public class AttractionServiceImplTest {
     }
 
     @Test
-    void testDelete() {
+    void testDeleteById() {
         doNothing().when(this.repoAttraction).deleteById("fenifneoinie");
 
-        this.attractionService.delete("fenifneoinie");
+        this.attractionService.deleteById("fenifneoinie");
 
         verify(this.repoAttraction, times(1)).deleteById("fenifneoinie");
     }

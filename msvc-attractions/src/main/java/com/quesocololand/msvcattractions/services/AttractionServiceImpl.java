@@ -54,7 +54,7 @@ public class AttractionServiceImpl implements AttractionService{
 
     @Override
     @Transactional
-    public void delete(String id) {
+    public void deleteById(String id) {
         this.repoAttraction.deleteById(id);
     }
 
