@@ -21,7 +21,7 @@ public class AttractionServiceImpl implements AttractionService{
         this.repoAttraction = repoAttraction;
     }
 
-        //Methods de AttractionServiceImpl
+        //Methods of AttractionServiceImpl
     @Override
     @Transactional(readOnly = true)
     public List<AttractionDTO> findAll() {
@@ -54,25 +54,7 @@ public class AttractionServiceImpl implements AttractionService{
 
     @Override
     @Transactional
-    public void delete(String id) {
+    public void deleteById(String id) {
         this.repoAttraction.deleteById(id);
     }
-
-    /*private static AttractionDTO buildAttractionDTO(Attraction a) {
-        return AttractionDTO.builder()
-                .id(a.getId())
-                .name(a.getName())
-                .status(a.getStatus())
-                .capacity(a.getCapacity())
-                .build();
-    }*/
-
-    /*private static Attraction buildAttraction(AttractionDTO attractionDTO) {
-        return Attraction.builder()
-                .name(attractionDTO.getName())
-                .status(attractionDTO.getStatus())
-                    *//*.status(AttractionStatus.valueOf(String.valueOf(attractionDTO.getStatus())))*//*
-                .capacity(attractionDTO.getCapacity())
-                .build();
-    }*/
 }

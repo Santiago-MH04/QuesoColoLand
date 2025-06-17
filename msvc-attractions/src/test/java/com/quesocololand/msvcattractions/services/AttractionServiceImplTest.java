@@ -3,7 +3,6 @@ package com.quesocololand.msvcattractions.services;
 import com.quesocololand.msvcattractions.exceptions.AttractionPersistenceException;
 import com.quesocololand.msvcattractions.models.Attraction;
 import com.quesocololand.msvcattractions.models.dto.AttractionDTO;
-import com.quesocololand.msvcattractions.models.mapper.AttractionMapper;
 import com.quesocololand.msvcattractions.models.utils.AttractionStatus;
 import com.quesocololand.msvcattractions.repositories.AttractionRepository;
 
@@ -13,10 +12,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -45,13 +40,13 @@ public class AttractionServiceImplTest {
     @BeforeEach
     void setUp() {
         attractionDTO = AttractionDTO.builder()
-                .id("ADMSCEFPFAIOFNE")
+                ._id("ADMSCEFPFAIOFNE")
                 .name("Montaña Rusa")
                 .status("ACTIVE")
                 .capacity(20)
                 .build();
         attraction = Attraction.builder()
-                .id("fenifneoinie")
+                ._id("fenifneoinie")
                 .name("Montaña Rusa")
                 .status(AttractionStatus.ACTIVE)
                 .capacity(20)
@@ -122,10 +117,10 @@ public class AttractionServiceImplTest {
     }
 
     @Test
-    void testDelete() {
+    void testDeleteById() {
         doNothing().when(this.repoAttraction).deleteById("fenifneoinie");
 
-        this.attractionService.delete("fenifneoinie");
+        this.attractionService.deleteById("fenifneoinie");
 
         verify(this.repoAttraction, times(1)).deleteById("fenifneoinie");
     }

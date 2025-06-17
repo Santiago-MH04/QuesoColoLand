@@ -16,13 +16,13 @@ class AttractionMapperTest {
     @BeforeEach
     void setUp() {
         attractionDTO = AttractionDTO.builder()
-                .id("ADMSCEFPFAIOFNE")
+                ._id("ADMSCEFPFAIOFNE")
                 .name("Montaña Rusa")
                 .status("ACTIVE")
                 .capacity(20)
                 .build();
         attraction = Attraction.builder()
-                .id("fenifneoinie")
+                ._id("fenifneoinie")
                 .name("Montaña Rusa")
                 .status(AttractionStatus.ACTIVE)
                 .capacity(20)
