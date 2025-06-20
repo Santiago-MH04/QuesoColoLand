@@ -6,6 +6,7 @@ import com.quesocololand.msvcattractions.models.dto.AttractionDTO;
 import com.quesocololand.msvcattractions.models.utils.AttractionStatus;
 import com.quesocololand.msvcattractions.repositories.AttractionRepository;
 
+import com.quesocololand.msvcattractions.services.implementations.AttractionServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

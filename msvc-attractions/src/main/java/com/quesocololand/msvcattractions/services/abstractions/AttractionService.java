@@ -1,4 +1,4 @@
-package com.quesocololand.msvcattractions.services;
+package com.quesocololand.msvcattractions.services.abstractions;
 
 import com.quesocololand.msvcattractions.models.Attraction;
 import com.quesocololand.msvcattractions.models.dto.AttractionDTO;
