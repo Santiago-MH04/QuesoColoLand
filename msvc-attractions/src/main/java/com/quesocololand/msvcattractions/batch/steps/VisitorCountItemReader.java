@@ -1,15 +1,19 @@
 package com.quesocololand.msvcattractions.batch.steps;
 
 import com.quesocololand.msvcattractions.models.VisitorCount;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 
+@Component
+@Slf4j
 public class VisitorCountItemReader extends FlatFileItemReader<VisitorCount> {
         //Fields of VisitorCountItemReader
     private static final String RESOURCE_PATH = "data/visitors.csv";

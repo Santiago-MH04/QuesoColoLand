@@ -2,8 +2,12 @@ package com.quesocololand.msvcattractions.configs;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import org.springframework.batch.core.Job;
 import org.springframework.batch.core.explore.JobExplorer;
 import org.springframework.batch.core.explore.support.MongoJobExplorerFactoryBean;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.launch.support.TaskExecutorJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.MongoJobRepositoryFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,16 +31,15 @@ public class MongoDBConfig {
         //Bean getters of MongoDBConfig (getters)
     @Bean
     public MongoClient mongoClient() {
-        return MongoClients.create();
+        return MongoClients.create("mongodb+srv://santimh04:FXsjq4tEG2aiyOLA@personalcluster.kgguhd0.mongodb.net/QuesoColoLand?retryWrites=true&w=majority");
     }
 
     @Bean
     public MongoTemplate mongoTemplate(MongoClient mongoClient) {
-        MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, "QuesoColoLand");
-        MappingMongoConverter mappingMongoConverter = (MappingMongoConverter) mongoTemplate.getConverter();
-            mappingMongoConverter.setMapKeyDotReplacement(".");
-            /*mappingMongoConverter.setCustomConversions(this.customConversions());*/
-            mappingMongoConverter.afterPropertiesSet();
+        var mongoTemplate = new MongoTemplate(mongoClient, "QuesoColoLand");
+        var mappingMongoConverter = (MappingMongoConverter) mongoTemplate.getConverter();
+        mappingMongoConverter.setMapKeyDotReplacement(".");
+        mappingMongoConverter.afterPropertiesSet();
         return mongoTemplate;
     }
 
@@ -46,26 +49,21 @@ public class MongoDBConfig {
     }
 
     @Bean
-    public JobRepository mongoJobRepository(MongoTemplate mongoTemplate, MongoTransactionManager transactionManager) throws Exception {
+    public JobRepository jobRepository(MongoTemplate mongoTemplate, MongoTransactionManager transactionManager) throws Exception {
         MongoJobRepositoryFactoryBean jobRepositoryFactoryBean = new MongoJobRepositoryFactoryBean();
-            jobRepositoryFactoryBean.setMongoOperations(mongoTemplate);
-            jobRepositoryFactoryBean.setTransactionManager(transactionManager);
-            jobRepositoryFactoryBean.afterPropertiesSet();
+        jobRepositoryFactoryBean.setMongoOperations(mongoTemplate);
+        jobRepositoryFactoryBean.setTransactionManager(transactionManager);
+        jobRepositoryFactoryBean.afterPropertiesSet();
         return jobRepositoryFactoryBean.getObject();
     }
 
     @Bean
-    @Primary
-    public JobExplorer mongoJobExplorer(MongoTemplate mongoTemplate, MongoTransactionManager transactionManager) throws Exception {
+    public JobExplorer jobExplorer(MongoTemplate mongoTemplate, MongoTransactionManager transactionManager) throws Exception {
         var mongoExplorerFactoryBean = new MongoJobExplorerFactoryBean();
-            mongoExplorerFactoryBean.setMongoOperations(mongoTemplate);
-            mongoExplorerFactoryBean.setTransactionManager(transactionManager);
-            mongoExplorerFactoryBean.afterPropertiesSet();
+        mongoExplorerFactoryBean.setMongoOperations(mongoTemplate);
+        mongoExplorerFactoryBean.setTransactionManager(transactionManager);
+        mongoExplorerFactoryBean.afterPropertiesSet();
         return mongoExplorerFactoryBean.getObject();
     }
 
-        //Methods of MongoDBConfig
-    /*public CustomConversions customConversions() {
-        return new MongoCustomConversions(Arrays.asList(new TopicPartitionToStringConverter(), new StringToTopicPartitionConverter()));
-    }*/
 }

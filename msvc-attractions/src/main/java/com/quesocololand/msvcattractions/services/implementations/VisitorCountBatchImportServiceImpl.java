@@ -16,20 +16,12 @@ import org.springframework.stereotype.Service;
 import java.nio.file.Path;
 
 @Service
+@RequiredArgsConstructor
 public class VisitorCountBatchImportServiceImpl implements VisitorCountBatchImportService {
-        //Fields of VisitorCountBatchImportServiceImpl
-    private final JobLauncher jobLauncher;
+
     private final Job job;
+    private final JobLauncher jobLauncher;
 
-        //Constructors of VisitorCountBatchImportServiceImpl
-    public VisitorCountBatchImportServiceImpl(@Qualifier("mongoJobLauncher") JobLauncher jobLauncher, Job job) {
-        this.jobLauncher = jobLauncher;
-        this.job = job;
-    }
-
-    //Field setters of VisitorCountBatchImportServiceImpl (setters)
-    //Field getters of VisitorCountBatchImportServiceImpl (getters)
-        //Methods of VisitorCountBatchImportServiceImpl
     @Override
     public void batchImport(Path fileResourcePath) throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
         JobParameters jobParameters = new JobParametersBuilder()
