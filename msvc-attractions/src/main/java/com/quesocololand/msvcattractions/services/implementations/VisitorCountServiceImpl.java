@@ -3,6 +3,7 @@ package com.quesocololand.msvcattractions.services.implementations;
 import com.quesocololand.msvcattractions.models.VisitorCount;
 import com.quesocololand.msvcattractions.repositories.VisitorCountRepository;
 import com.quesocololand.msvcattractions.services.abstractions.VisitorCountService;
+import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;

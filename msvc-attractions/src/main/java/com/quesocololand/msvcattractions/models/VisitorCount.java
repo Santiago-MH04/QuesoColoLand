@@ -6,8 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Document(collection = "visitor_counts")
 @AllArgsConstructor
@@ -21,6 +23,8 @@ public class VisitorCount {
     private String attractionId;
     private int count;
     private Instant timestamp;
+    @Field(name = "registered_at")
+    private LocalDateTime registeredAt;
 
     //Constructors of VisitorCount
     //Field setters of VisitorCount (setters)
