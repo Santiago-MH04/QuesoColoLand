@@ -28,13 +28,13 @@ import java.util.Map;
 public class VisitorCountItemReader extends FlatFileItemReader<VisitorCount> {
         //Fields of VisitorCountItemReader
     /*@Value("#{jobParameters['filePath']}")
-    private static final String filePath;*/
+    private String filePath;*/
     private static final String RESOURCE_PATH = "data/visitors.csv";
 
         //Constructors of VisitorCountItemReader
     public VisitorCountItemReader() {
         setName("readVisitorCounts");
-        setResource(new ClassPathResource(RESOURCE_PATH)); //It points directly to resources folder
+        setResource(new ClassPathResource(/*filePath*/ RESOURCE_PATH)); //It points directly to resources folder
         setLinesToSkip(1);
         setEncoding(StandardCharsets.UTF_8.name());
         setLineMapper(getLineMapper());
