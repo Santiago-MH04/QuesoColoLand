@@ -3,13 +3,9 @@ package com.quesocololand.msvcattractions.services.implementations;
 import com.quesocololand.msvcattractions.models.VisitorCount;
 import com.quesocololand.msvcattractions.repositories.VisitorCountRepository;
 import com.quesocololand.msvcattractions.services.abstractions.VisitorCountService;
-import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
+import java.time.*;
 import java.util.List;
 
 @Service
@@ -32,10 +28,9 @@ public class VisitorCountServiceImpl implements VisitorCountService {
 
     @Override
     public List<VisitorCount> findByTimestampOn(LocalDate date) {
-        ZoneId zone = ZoneId.of("America/Bogota");
 
-        Instant startOfDay = date.atStartOfDay(zone).toInstant();
-        Instant endOfDay = date.plusDays(1).atStartOfDay(zone).toInstant().minus(1, ChronoUnit.NANOS);
+        LocalDateTime startOfDay = date.atStartOfDay();
+        LocalDateTime endOfDay = date.atTime(LocalTime.MAX);
 
         return this.visitorCountRepo.findByTimestampBetween(startOfDay, endOfDay);
     }

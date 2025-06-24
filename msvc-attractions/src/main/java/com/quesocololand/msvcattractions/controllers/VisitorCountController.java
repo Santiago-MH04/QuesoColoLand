@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("api/visitor-counts")
@@ -34,8 +35,12 @@ public class VisitorCountController {
     //Field getters of VisitorCountController (getters)
         //Methods of VisitorCountController
     @PostMapping("/upload")
-    ResponseEntity<?> upload(@RequestParam(name = "file") MultipartFile file) throws IOException, JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
-        Path resourcePath = Files.createTempFile("visitors-" + LocalDateTime.now(), ".csv");
+    ResponseEntity<?> upload(@RequestParam(name = "file") MultipartFile multipartFile) throws IOException, JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
+        LocalDateTime currentDate = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH-mm-ss");
+        String dateFormatted = currentDate.format(formatter);
+
+        Path resourcePath = Files.createTempFile("visitors-" + dateFormatted, ".csv");
         this.visitorCountBatchImportService.batchImport(resourcePath);
         return ResponseEntity.ok("Visitor counts uploaded to database");
     }

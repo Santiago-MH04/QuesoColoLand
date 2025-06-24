@@ -38,8 +38,8 @@ public class MongoDBConfig {
     public MongoTemplate mongoTemplate(MongoClient mongoClient) {
         var mongoTemplate = new MongoTemplate(mongoClient, "QuesoColoLand");
         var mappingMongoConverter = (MappingMongoConverter) mongoTemplate.getConverter();
-        mappingMongoConverter.setMapKeyDotReplacement(".");
-        mappingMongoConverter.afterPropertiesSet();
+            mappingMongoConverter.setMapKeyDotReplacement(".");
+            mappingMongoConverter.afterPropertiesSet();
         return mongoTemplate;
     }
 

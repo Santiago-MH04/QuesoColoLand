@@ -3,7 +3,7 @@ package com.quesocololand.msvcattractions.repositories;
 import com.quesocololand.msvcattractions.models.VisitorCount;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface VisitorCountRepository extends MongoRepository<VisitorCount, String> {
@@ -13,5 +13,5 @@ public interface VisitorCountRepository extends MongoRepository<VisitorCount, St
     //Field getters of VisitorCountRepository (getters)
         //Methods of VisitorCountRepository
     public List<VisitorCount> findByAttractionId(String attractionId);
-    public List<VisitorCount> findByTimestampBetween(Instant startOfDay, Instant endOfDay);
+    public List<VisitorCount> findByTimestampBetween(LocalDateTime startOfDay, LocalDateTime endOfDay);
 }

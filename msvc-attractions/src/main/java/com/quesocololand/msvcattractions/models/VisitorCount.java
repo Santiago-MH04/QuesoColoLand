@@ -22,7 +22,7 @@ public class VisitorCount {
     private String id;
     private String attractionId;
     private int count;
-    private Instant timestamp;
+    private LocalDateTime timestamp;
     @Field(name = "registered_at")
     private LocalDateTime registeredAt;
 

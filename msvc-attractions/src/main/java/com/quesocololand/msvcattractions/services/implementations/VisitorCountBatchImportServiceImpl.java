@@ -28,7 +28,7 @@ public class VisitorCountBatchImportServiceImpl implements VisitorCountBatchImpo
                 .addString("filePath", fileResourcePath.toAbsolutePath().toString())
                 .toJobParameters();
 
-                this.jobLauncher.run(this.job, jobParameters);
+        this.jobLauncher.run(this.job, jobParameters);
     }
 
 }

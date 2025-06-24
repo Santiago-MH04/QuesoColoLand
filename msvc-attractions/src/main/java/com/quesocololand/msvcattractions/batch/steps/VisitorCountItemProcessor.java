@@ -10,13 +10,16 @@ import java.time.LocalDateTime;
 @Component
 @Slf4j
 public class VisitorCountItemProcessor implements ItemProcessor<VisitorCount, VisitorCount> {
-    //Fields of VisitorCountItemProcessor
+        //Fields of VisitorCountItemProcessor
+    /*private static int recordCount;*/
+
     //Constructors of VisitorCountItemProcessor
     //Field setters of VisitorCountItemProcessor (setters)
     //Field getters of VisitorCountItemProcessor (getters)
         //Methods of VisitorCountItemProcessor
     @Override
     public VisitorCount process(VisitorCount item) throws Exception {
+        /*log.info("Passing record {}");*/
         item.setRegisteredAt(LocalDateTime.now());
         return item;
     }
