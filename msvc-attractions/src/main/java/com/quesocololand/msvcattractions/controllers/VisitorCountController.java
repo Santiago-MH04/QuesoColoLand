@@ -41,6 +41,7 @@ public class VisitorCountController {
         String dateFormatted = currentDate.format(formatter);
 
         Path resourcePath = Files.createTempFile("visitors-" + dateFormatted, ".csv");
+        multipartFile.transferTo(resourcePath);
         this.visitorCountBatchImportService.batchImport(resourcePath);
         return ResponseEntity.ok("Visitor counts uploaded to database");
     }

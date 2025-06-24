@@ -4,6 +4,7 @@ import com.quesocololand.msvcattractions.models.VisitorCount;
 
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
@@ -12,6 +13,7 @@ import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Component;
 
 import java.beans.PropertyEditor;
@@ -24,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@StepScope
 @Slf4j
 public class VisitorCountItemReader extends FlatFileItemReader<VisitorCount> {
         //Fields of VisitorCountItemReader
@@ -32,9 +35,9 @@ public class VisitorCountItemReader extends FlatFileItemReader<VisitorCount> {
     private static final String RESOURCE_PATH = "data/visitors.csv";
 
         //Constructors of VisitorCountItemReader
-    public VisitorCountItemReader() {
+    public VisitorCountItemReader(@Value("#{jobParameters['filePath']}") String filePath) {
         setName("readVisitorCounts");
-        setResource(new ClassPathResource(/*filePath*/ RESOURCE_PATH)); //It points directly to resources folder
+        setResource(new FileSystemResource(filePath)); //It points directly to resources folder
         setLinesToSkip(1);
         setEncoding(StandardCharsets.UTF_8.name());
         setLineMapper(getLineMapper());
