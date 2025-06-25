@@ -7,11 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface VisitorCountRepository extends MongoRepository<VisitorCount, String> {
-    //Fields of VisitorCountRepository
-    //Constructors of VisitorCountRepository
-    //Field setters of VisitorCountRepository (setters)
-    //Field getters of VisitorCountRepository (getters)
-        //Methods of VisitorCountRepository
+    //Methods of VisitorCountRepository
     public List<VisitorCount> findByAttractionId(String attractionId);
     public List<VisitorCount> findByTimestampBetween(LocalDateTime startOfDay, LocalDateTime endOfDay);
 }

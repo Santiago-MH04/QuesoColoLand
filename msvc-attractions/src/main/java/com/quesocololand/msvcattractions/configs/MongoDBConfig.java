@@ -25,10 +25,7 @@ import java.util.Arrays;
 
 @Configuration
 public class MongoDBConfig {
-    //Fields of MongoDBConfig
-    //Constructors of MongoDBConfig
-    //Field setters of MongoDBConfig (setters)
-        //Bean getters of MongoDBConfig (getters)
+    //Bean getters of MongoDBConfig (getters)
     @Bean
     public MongoClient mongoClient() {
         return MongoClients.create("mongodb+srv://santimh04:FXsjq4tEG2aiyOLA@personalcluster.kgguhd0.mongodb.net/QuesoColoLand?retryWrites=true&w=majority");

@@ -22,10 +22,10 @@ import java.time.format.DateTimeFormatter;
 @RestController
 @RequestMapping("/api/visitor-counts")
 public class VisitorCountController {
-        //Fields of VisitorCountController
+    //Fields of VisitorCountController
     private final VisitorCountBatchImportService visitorCountBatchImportService;
 
-        //Constructors of VisitorCountController
+    //Constructors of VisitorCountController
     public VisitorCountController(VisitorCountBatchImportService visitorCountBatchImportService) {
         this.visitorCountBatchImportService = visitorCountBatchImportService;
     }
@@ -33,7 +33,7 @@ public class VisitorCountController {
 
     //Field setters of VisitorCountController (setters)
     //Field getters of VisitorCountController (getters)
-        //Methods of VisitorCountController
+    //Methods of VisitorCountController
     @PostMapping("/upload")
     ResponseEntity<?> upload(@RequestParam(name = "file") MultipartFile multipartFile) throws IOException, JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
         LocalDateTime currentDate = LocalDateTime.now();

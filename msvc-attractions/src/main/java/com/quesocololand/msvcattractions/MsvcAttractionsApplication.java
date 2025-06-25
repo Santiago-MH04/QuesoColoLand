@@ -11,14 +11,12 @@ import org.springframework.context.support.GenericApplicationContext;
 public class MsvcAttractionsApplication {
 	public static void main(String[] args) {
 		SpringApplication application = new SpringApplication(MsvcAttractionsApplication.class);
-			//Manually add the configuration for steps
+		//Manually add the configuration for steps
 		application.addInitializers((ApplicationContextInitializer<GenericApplicationContext>) context -> {
 			context.registerBean(ScopeConfiguration.class);
 		});
-			//Run the application
+		//Run the application
 		application.run(args);
-
-		/*SpringApplication.run(MsvcAttractionsApplication.class, args);*/
 	}
 }
 

@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 
-import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.step.builder.StepBuilder;
@@ -20,12 +19,11 @@ import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.web.context.annotation.SessionScope;
 
 @Configuration
 @RequiredArgsConstructor
 public class BatchConfig {
-        //Fields of BatchConfig
+    //Fields of BatchConfig
     private final VisitorCountItemReader visitorCountItemReader;
     private final VisitorCountItemWriter visitorCountItemWriter;
 
@@ -33,17 +31,15 @@ public class BatchConfig {
     private final PlatformTransactionManager transactionManager;
     private final JobRepository jobRepository;
 
-        //Beans of BatchConfig
+    //Beans of BatchConfig
     @Bean
-    @SessionScope
     public Step readFile(){
         return new StepBuilder("CSVImportToDatabase", this.jobRepository)
-                //Input object, output object
+            //Input object, output object
             .<VisitorCount, VisitorCount>chunk(10, this.transactionManager)
             .reader(this.visitorCountItemReader)
             .writer(this.visitorCountItemWriter)
             .processor(this.visitorCountItemProcessor)
-            /*.faultTolerant()*/
             .build();
     }
     @Bean

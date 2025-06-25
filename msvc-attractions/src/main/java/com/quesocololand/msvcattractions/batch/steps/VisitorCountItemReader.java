@@ -29,12 +29,10 @@ import java.util.Map;
 @StepScope
 @Slf4j
 public class VisitorCountItemReader extends FlatFileItemReader<VisitorCount> {
-        //Fields of VisitorCountItemReader
-    /*@Value("#{jobParameters['filePath']}")
-    private String filePath;*/
+    //Fields of VisitorCountItemReader
     private static final String RESOURCE_PATH = "data/visitors.csv";
 
-        //Constructors of VisitorCountItemReader
+    //Constructors of VisitorCountItemReader
     public VisitorCountItemReader(@Value("#{jobParameters['filePath']}") String filePath) {
         setName("readVisitorCounts");
         setResource(new FileSystemResource(filePath)); //It points directly to resources folder
