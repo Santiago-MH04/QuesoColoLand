@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @RestController
-@RequestMapping("api/visitor-counts")
+@RequestMapping("/api/visitor-counts")
 public class VisitorCountController {
         //Fields of VisitorCountController
     private final VisitorCountBatchImportService visitorCountBatchImportService;
