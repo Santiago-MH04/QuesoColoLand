@@ -3,7 +3,7 @@ package com.quesocololand.msvcattractions.controllers;
 import com.quesocololand.msvcattractions.exceptions.AttractionNotFoundException;
 import com.quesocololand.msvcattractions.models.Attraction;
 import com.quesocololand.msvcattractions.models.dto.AttractionDTO;
-import com.quesocololand.msvcattractions.services.AttractionService;
+import com.quesocololand.msvcattractions.services.abstractions.AttractionService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AttractionMapperTest {
+class   AttractionMapperTest {
 
     private AttractionDTO attractionDTO;
     private Attraction attraction;
