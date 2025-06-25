@@ -1,10 +1,11 @@
-package com.quesocololand.msvcattractions.services;
+package com.quesocololand.msvcattractions.services.implementations;
 
 import com.quesocololand.msvcattractions.exceptions.AttractionPersistenceException;
 import com.quesocololand.msvcattractions.models.Attraction;
 import com.quesocololand.msvcattractions.models.dto.AttractionDTO;
 import com.quesocololand.msvcattractions.models.mapper.AttractionMapper;
 import com.quesocololand.msvcattractions.repositories.AttractionRepository;
+import com.quesocololand.msvcattractions.services.abstractions.AttractionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AttractionServiceImpl implements AttractionService{
+public class AttractionServiceImpl implements AttractionService {
         //Fields of AttractionServiceImpl
     private final AttractionRepository repoAttraction;
 

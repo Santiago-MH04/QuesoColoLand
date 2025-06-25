@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 
 import java.time.LocalDateTime;
 
-@Document(collection = "attractions")   //Pending of creation
+@Document(collection = "attractions")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
