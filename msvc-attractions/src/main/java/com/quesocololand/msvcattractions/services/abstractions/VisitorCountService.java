@@ -13,5 +13,6 @@ public interface VisitorCountService {
         //Methods of VisitorCountService
     public List<VisitorCount> findByAttractionId(String attractionId);
     public List<VisitorCount> findByTimestampOn(LocalDate date);
+    public VisitorCount save(VisitorCount visitorCount);
     public void saveAll(List<VisitorCount> visitorCountList);   //In order to avoid insertion problems with the Chunk
 }
