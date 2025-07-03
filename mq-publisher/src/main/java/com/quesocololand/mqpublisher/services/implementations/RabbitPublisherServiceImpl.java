@@ -22,9 +22,6 @@ public class RabbitPublisherServiceImpl implements RabbitPublisherService {
     private String routingKeyPrefix;
     private final RabbitTemplate rabbitTemplate;    //In order not to make the cast
 
-    //Constructors of RabbitPublisherServiceImpl
-    //Field setters of RabbitPublisherServiceImpl (setters)
-    //Field getters of RabbitPublisherServiceImpl (getters)
     //Methods of RabbitPublisherServiceImpl
     @Override
     public void publish(VisitorCount message) {
