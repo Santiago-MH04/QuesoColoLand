@@ -1,5 +1,6 @@
 package com.quesocololand.msvcattractions.batch.steps;
 
+import com.quesocololand.msvcattractions.batch.VisitorCountItemReader;
 import com.quesocololand.msvcattractions.models.VisitorCount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,6 @@ import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DefaultFieldSet;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.batch.item.file.transform.FieldSet;
-import org.springframework.core.io.FileSystemResource;
 
 import java.beans.PropertyEditor;
 import java.beans.PropertyEditorSupport;
