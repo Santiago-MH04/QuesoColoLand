@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class VisitorCount {
-        //Fields of VisitorCount
+    //Fields of VisitorCount
     private String id;
     private String attractionId;
     private int count;

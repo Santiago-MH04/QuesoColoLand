@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class RabbitPublisherServiceImplTest {
     //Fields of RabbitPublisherServiceImplTest
-        //Properties got via injection using @Value
+    //Properties got via injection using @Value
     private final String testExchangeName = "test_visitor_counts_exchange";
     private final String testRoutingKeyPrefix = "test_visitor_counts.#";
     @Mock // Creates a RabbitTemplate mock

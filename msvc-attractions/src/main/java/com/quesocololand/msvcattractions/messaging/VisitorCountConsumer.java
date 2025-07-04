@@ -25,7 +25,7 @@ public class VisitorCountConsumer {
         } catch (Exception e) {
             // Error handling: if occurs an error while persisting, the message could be ser recovered
             // or sent to a "dead-letter queue" depending on RabbitMQ’s configuration
-            log.info("Error when processing and saving the counting message: {}", e.getMessage());
+            log.error("Error when processing and saving the counting message: {}", e.getMessage());
             // On a production environment, consider:
             // - Throw a AmqpRejectAndDontRequeueException to send to dead-letter queue
             // - Register the error on a logs system
