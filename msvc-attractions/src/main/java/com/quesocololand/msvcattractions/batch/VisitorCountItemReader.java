@@ -1,4 +1,4 @@
-package com.quesocololand.msvcattractions.batch.steps;
+package com.quesocololand.msvcattractions.batch;
 
 import com.quesocololand.msvcattractions.models.VisitorCount;
 
@@ -12,7 +12,6 @@ import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Component;
 

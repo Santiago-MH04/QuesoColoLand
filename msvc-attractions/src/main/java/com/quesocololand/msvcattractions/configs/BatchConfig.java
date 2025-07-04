@@ -1,9 +1,9 @@
-package com.quesocololand.msvcattractions.batch;
+package com.quesocololand.msvcattractions.configs;
 
 
-import com.quesocololand.msvcattractions.batch.steps.VisitorCountItemProcessor;
-import com.quesocololand.msvcattractions.batch.steps.VisitorCountItemReader;
-import com.quesocololand.msvcattractions.batch.steps.VisitorCountItemWriter;
+import com.quesocololand.msvcattractions.batch.VisitorCountItemProcessor;
+import com.quesocololand.msvcattractions.batch.VisitorCountItemReader;
+import com.quesocololand.msvcattractions.batch.VisitorCountItemWriter;
 import com.quesocololand.msvcattractions.models.VisitorCount;
 
 import lombok.RequiredArgsConstructor;

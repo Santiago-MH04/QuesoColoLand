@@ -31,6 +31,11 @@ public class VisitorCountServiceImpl implements VisitorCountService {
     }
 
     @Override
+    public VisitorCount save(VisitorCount visitorCount) {
+        return this.visitorCountRepo.save(visitorCount);
+    }
+
+    @Override
     public void saveAll(List<VisitorCount> visitorCountList) {
         this.visitorCountRepo.saveAll(visitorCountList);
     }

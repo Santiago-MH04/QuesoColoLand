@@ -1,4 +1,4 @@
-package com.quesocololand.msvcattractions.batch.steps;
+package com.quesocololand.msvcattractions.batch;
 
 import com.quesocololand.msvcattractions.models.VisitorCount;
 import lombok.extern.slf4j.Slf4j;
