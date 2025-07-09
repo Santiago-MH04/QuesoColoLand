@@ -15,6 +15,7 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,11 +42,6 @@ public class VisitorCountController {
     private final VisitorCountService visitorCountService;
 
     //Constructors of VisitorCountController
-    /*public VisitorCountController(VisitorCountBatchImportService visitorCountBatchImportService) {
-        this.visitorCountBatchImportService = visitorCountBatchImportService;
-    }*/
-
-
     //Field setters of VisitorCountController (setters)
     //Field getters of VisitorCountController (getters)
     //Methods of VisitorCountController
@@ -76,7 +72,7 @@ public class VisitorCountController {
         return ResponseEntity.ok("Visitor counts uploaded to database");
     }
 
-    @GetMapping("/grouped")
+    @GetMapping("/aggregated")
     @Operation(
         summary = "grouped by interval visitor counts endpoint",
         description = "lists the attendance to an attraction on a given time-interval in QuesoColoLand",
@@ -92,13 +88,13 @@ public class VisitorCountController {
             )
         }
     )
-    public ResponseEntity<List<GroupedVisitorCountDTO>> getGroupedVisitorCounts(
+    public ResponseEntity<?> getGroupedVisitorCounts(
             @RequestParam String attractionId,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, // Format "YYYY-MM-DD"
             @RequestParam(defaultValue = "10") int intervalMinutes) {
         if (!List.of(5, 10, 15, 30, 60).contains(intervalMinutes)) {
             log.error("Interval must be 5, 15, 30, or 60 minutes");
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The defined interval must be either 5, 15, 30, or 60 minutes");
         }
         List<GroupedVisitorCountDTO> groupedVisitorCounts = this.visitorCountService.getGroupedVisitorCounts(attractionId, date, intervalMinutes);
 
