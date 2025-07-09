@@ -9,5 +9,6 @@ import java.util.List;
 public interface VisitorCountRepository extends MongoRepository<VisitorCount, String> {
     //Methods of VisitorCountRepository
     public List<VisitorCount> findByAttractionId(String attractionId);
-    public List<VisitorCount> findByTimestampBetween(LocalDateTime startOfDay, LocalDateTime endOfDay);
+    public List<VisitorCount> findByTimestampBetween(LocalDateTime start, LocalDateTime end);
+    public List<VisitorCount> findByAttractionIdAndTimestampBetween(String attractionId, LocalDateTime start, LocalDateTime end);
 }
