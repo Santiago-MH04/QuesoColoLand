@@ -1,6 +1,7 @@
 package com.quesocololand.msvcattractions.services.abstractions;
 
 import com.quesocololand.msvcattractions.models.VisitorCount;
+import com.quesocololand.msvcattractions.models.dto.GroupedVisitorCountDTO;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,4 +16,5 @@ public interface VisitorCountService {
     public List<VisitorCount> findByTimestampOn(LocalDate date);
     public VisitorCount save(VisitorCount visitorCount);
     public void saveAll(List<VisitorCount> visitorCountList);   //In order to avoid insertion problems with the Chunk
+    public List<GroupedVisitorCountDTO> getGroupedVisitorCounts(String attractionId, LocalDate date, int intervalMinutes);
 }
