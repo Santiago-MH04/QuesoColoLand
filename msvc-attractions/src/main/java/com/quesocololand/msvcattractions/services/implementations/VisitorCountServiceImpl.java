@@ -21,7 +21,8 @@ import java.io.StringWriter;
 import java.time.*;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @Service
 @RequiredArgsConstructor
@@ -102,17 +103,26 @@ public class VisitorCountServiceImpl implements VisitorCountService {
     }
 
     @Override
-    public String getCsvFile(String attractionId, LocalDate date, int intervalMinutes) throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, IOException {
+    public String getCsvFile(String attractionId, LocalDate date, int intervalMinutes) throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, IOException, ExecutionException, InterruptedException {
         //Make concurrent magic using CompletableFuture for steps 1 and 2
         //1. Get attractionName
-        AtomicReference<String> attractionName = new AtomicReference<>();
-        this.getAttractionNameById(attractionId).ifPresent(attractionName::set);
+        CompletableFuture<String> columnNameCompletable = CompletableFuture.supplyAsync(this.getAttractionNameById(attractionId)::get);
+
         //2. Get grouped VisitorCounts
-        List<GroupedVisitorCountDTO> visitorCountDTOList = this.getGroupedVisitorCounts(attractionId, date, intervalMinutes);
+        CompletableFuture<List<GroupedVisitorCountDTO>> listCompletable = CompletableFuture.supplyAsync(() -> this.getGroupedVisitorCounts(attractionId, date, intervalMinutes));
+
+        // Wait for both calls to complete
+        CompletableFuture<Void> combinedFuture = CompletableFuture.allOf(columnNameCompletable, listCompletable);
+            combinedFuture.join();
+
+        // Get the results from the CompletableFutures
+        String attractionName = columnNameCompletable.get();
+        List<GroupedVisitorCountDTO> visitorCountDTOList = listCompletable.get();
 
         //3. Set the attraction name for this
-        visitorCountDTOList.forEach(vc -> vc.setAttractionName(String.valueOf(attractionName)));
-        //4. Get the list
+        visitorCountDTOList.forEach(vc -> vc.setAttractionName(attractionName));
+
+        //4. Return the list
         return this.generateCsv(visitorCountDTOList);
     }
 }

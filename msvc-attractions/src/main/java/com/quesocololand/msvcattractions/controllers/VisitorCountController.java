@@ -31,6 +31,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/api/visitor-counts")
@@ -130,7 +131,12 @@ public class VisitorCountController {
             // 3. Devolver la respuesta con el contenido CSV en bytes
             return new ResponseEntity<>(csvFile.getBytes(), headers, HttpStatus.OK);
 
-        } catch (CsvRequiredFieldEmptyException | CsvDataTypeMismatchException | IOException e) {
+        } catch (CsvRequiredFieldEmptyException |
+                 CsvDataTypeMismatchException |
+                 IOException |
+                 ExecutionException |
+                 InterruptedException e
+        ) {
             log.error("Error during CSV generation/export for attractionId: {}", attractionId, e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
