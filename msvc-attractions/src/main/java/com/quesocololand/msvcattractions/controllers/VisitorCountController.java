@@ -107,6 +107,21 @@ public class VisitorCountController {
     }
 
     @GetMapping("/export")
+    @Operation(
+        summary = "grouped by interval visitor counts csv file generator endpoint",
+        description = "lists the attendance to an attraction on a given time-interval in QuesoColoLand, and generates a csv file from it",
+        tags = {"visitor attendance", "grouped", "time-interval", "get", "csv file generator"},
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "successful grouped visitor count csv file generation",
+                content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = List.class)
+                )
+            )
+        }
+    )
     public ResponseEntity<byte[]> exportGroupedVisitorCountsToCsv(
         @RequestParam String attractionId,
         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,

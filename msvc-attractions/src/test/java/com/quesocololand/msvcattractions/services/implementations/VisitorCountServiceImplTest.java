@@ -110,8 +110,8 @@ class VisitorCountServiceImplTest {
 
         // 3. Assert
         String expectedCsv = "ATTENDANCE,ATTRACTION ID,ATTRACTION NAME,INTERVAL START\n" +
-                "100,testAttractionId,testAttractionName,2025-07-12T09:00:00\n" +
-                "150,testAttractionId,testAttractionName,2025-07-12T09:15:00\n";
+            "100,testAttractionId,testAttractionName,2025-07-12T09:00:00\n" +
+            "150,testAttractionId,testAttractionName,2025-07-12T09:15:00\n";
 
         assertEquals(expectedCsv, csvContent);
     }
