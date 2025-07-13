@@ -30,7 +30,7 @@ public class VisitorCountServiceImpl implements VisitorCountService {
     //Fields of VisitorCountServiceImpl
     private final VisitorCountRepository repoVisitorCount;
     private final AttractionRepository repoAttraction;
-    public static final String CSV_HEADERS = "Attraction ID,Attraction name,Interval start,Attendance";
+    public static final String CSV_HEADERS = ("Attraction ID,Attraction name,Interval start,Attendance").toUpperCase();
 
     //Methods of VisitorCountServiceImpl
     @Override
@@ -76,7 +76,7 @@ public class VisitorCountServiceImpl implements VisitorCountService {
     }
 
     public String generateCsv(List<GroupedVisitorCountDTO> groupedCounts) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
-        if (groupedCounts == null /*|| groupedCounts.isEmpty()*/) {
+        if (groupedCounts == null || groupedCounts.isEmpty()) {
             // Generate the headers in case there’s no data
             StringWriter headerWriter = new StringWriter();
             try (CSVWriter csvWriter = new CSVWriter(headerWriter)) {
