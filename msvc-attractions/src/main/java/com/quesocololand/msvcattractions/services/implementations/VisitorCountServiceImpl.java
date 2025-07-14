@@ -120,7 +120,7 @@ public class VisitorCountServiceImpl implements VisitorCountService {
         List<GroupedVisitorCountDTO> visitorCountDTOList = listCompletable.get();
 
         //3. Set the attraction name for this
-        visitorCountDTOList.forEach(vc -> vc.setAttractionName(attractionName));
+        visitorCountDTOList.parallelStream().forEach(vc -> vc.setAttractionName(attractionName));
 
         //4. Return the list
         return this.generateCsv(visitorCountDTOList);
