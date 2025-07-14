@@ -115,6 +115,13 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.8.9</version>
 		</dependency>
+			<!--OpenCSV export library-->
+		<dependency>
+			<!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>5.11.2</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
