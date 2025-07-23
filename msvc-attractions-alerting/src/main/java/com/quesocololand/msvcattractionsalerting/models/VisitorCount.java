@@ -1,4 +1,4 @@
-package com.quesocololand.mqpublisher.models;
+package com.quesocololand.msvcattractionsalerting.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

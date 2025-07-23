@@ -1,7 +1,7 @@
-package com.quesocololand.mqpublisher.controllers;
+package com.quesocololand.msvcattractionsalerting.controllers;
 
-import com.quesocololand.mqpublisher.models.VisitorCount;
-import com.quesocololand.mqpublisher.services.abstractions.RabbitPublisherService;
+import com.quesocololand.msvcattractionsalerting.models.VisitorCount;
+import com.quesocololand.msvcattractionsalerting.services.abstractions.RabbitVisitorCountsPublisherService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 )
 public class MQPublisherController {
     //Fields of MQPublisherController
-    private final RabbitPublisherService rabbitPublisherService;
+    private final RabbitVisitorCountsPublisherService rabbitPublisherService;
 
     //Methods of MQPublisherController
     @PostMapping

@@ -1,4 +1,4 @@
-package com.quesocololand.mqpublisher.config;
+package com.quesocololand.msvcattractionsalerting.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;

@@ -10,9 +10,9 @@
 	</parent>
 
 	<groupId>com.quesocololand</groupId>
-	<artifactId>mq-publisher</artifactId>
+	<artifactId>msvc-attractions-alerting</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mq-publisher</name>
+	<name>msvc-attractions-alerting</name>
 	<description>QuesoColoLand amusement park</description>
 
 	<url/>

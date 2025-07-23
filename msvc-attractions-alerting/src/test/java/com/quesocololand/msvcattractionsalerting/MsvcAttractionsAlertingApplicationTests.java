@@ -1,10 +1,10 @@
-package com.quesocololand.mqpublisher;
+package com.quesocololand.msvcattractionsalerting;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MqPublisherApplicationTests {
+class MsvcAttractionsAlertingApplicationTests {
 
 	@Test
 	void contextLoads() {

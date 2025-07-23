@@ -1,7 +1,7 @@
-package com.quesocololand.mqpublisher.services.implementations;
+package com.quesocololand.msvcattractionsalerting.services.implementations;
 
-import com.quesocololand.mqpublisher.models.VisitorCount;
-import com.quesocololand.mqpublisher.services.abstractions.RabbitPublisherService;
+import com.quesocololand.msvcattractionsalerting.models.VisitorCount;
+import com.quesocololand.msvcattractionsalerting.services.abstractions.RabbitVisitorCountsPublisherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -14,15 +14,15 @@ import java.util.UUID;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class RabbitPublisherServiceImpl implements RabbitPublisherService {
-    //Fields of RabbitPublisherServiceImpl
+public class RabbitVisitorCountsPublisherServiceImpl implements RabbitVisitorCountsPublisherService {
+    //Fields of RabbitVisitorCountsPublisherServiceImpl
     @Value("${rabbitmq.exchange.visitor-counts}")
     private String exchangeName;
     @Value("${rabbitmq.routingkey.visitor-counts}")
     private String routingKeyPrefix;
     private final RabbitTemplate rabbitTemplate;    //In order not to make the cast
 
-    //Methods of RabbitPublisherServiceImpl
+    //Methods of RabbitVisitorCountsPublisherServiceImpl
     @Override
     public void publish(VisitorCount message) {
         log.info("Publishing some visitor counts into the queue");

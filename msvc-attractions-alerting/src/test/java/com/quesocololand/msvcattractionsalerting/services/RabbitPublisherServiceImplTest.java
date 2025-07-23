@@ -1,7 +1,7 @@
-package com.quesocololand.mqpublisher.services;
+package com.quesocololand.msvcattractionsalerting.services;
 
-import com.quesocololand.mqpublisher.models.VisitorCount;
-import com.quesocololand.mqpublisher.services.implementations.RabbitPublisherServiceImpl;
+import com.quesocololand.msvcattractionsalerting.models.VisitorCount;
+import com.quesocololand.msvcattractionsalerting.services.implementations.RabbitVisitorCountsPublisherServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,7 +29,7 @@ class RabbitPublisherServiceImplTest {
     private RabbitTemplate rabbitTemplate;
 
     @InjectMocks // Injects the mocks created (@Mock) at this service instance
-    private RabbitPublisherServiceImpl rabbitPublisherService;
+    private RabbitVisitorCountsPublisherServiceImpl rabbitPublisherService;
 
     //Configurations of RabbitPublisherServiceImplTest
     @BeforeEach

@@ -1,4 +1,4 @@
-package com.quesocololand.mqpublisher.config;
+package com.quesocololand.msvcattractionsalerting.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
