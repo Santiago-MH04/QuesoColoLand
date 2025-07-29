@@ -15,14 +15,12 @@ public interface VisitorCountRepository extends MongoRepository<VisitorCount, St
     public List<VisitorCount> findByAttractionIdAndTimestampBetween(String attractionId, LocalDateTime start, LocalDateTime end);
 
     @Aggregation(pipeline = {
-        "{ " +
-            "'$match': { " +
+        "{ '$match': { " +
                 "'attractionId': ?0, " +
                 "'timestamp': { '$gte': ?1, '$lte': ?2 } " +
             "} " +
         "}",
-        "{ " +
-            "'$project': { " +
+        "{ '$project': { " +
                 "'timestamp': 1, " +
                 "'intervalStart': { " +
                     "'$dateTrunc': { " +
@@ -36,8 +34,7 @@ public interface VisitorCountRepository extends MongoRepository<VisitorCount, St
                 "'count': 1, " +
             "} " +
         "}",
-        "{ " +
-            "'$group': { " +
+        "{ '$group': { " +
                 "'_id': { " +
                 "'attractionId': '$attractionId', " +
                 "'intervalStart': '$intervalStart' " +
