@@ -13,16 +13,33 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
     //Fields of RabbitMQConfig
     @Value("${rabbitmq.queue.visitor-counts}")
-    public String queueName;
+    public String visitorCountsQueueName;
+    @Value("${rabbitmq.queue.visitor-counts-alert}")
+    public String visitorCountsAlertQueueName;
+
     @Value("${rabbitmq.exchange.visitor-counts}")
     public String exchangeName;
+
     @Value("${rabbitmq.routingkey.visitor-counts}")
-    public String routingKey;
+    public String visitorCountsRoutingKey;
+    @Value("${rabbitmq.routingkey.visitor-counts-alert}")
+    public String visitorCountsAlertRoutingKey;
 
     //Beans of RabbitMQConfig
     @Bean
     public Queue visitorCountsQueue() {
-        return new Queue(this.queueName);
+        return new Queue(this.visitorCountsQueueName);
+    }
+    @Bean
+    public Queue visitorCountsAlertQueue() {
+        // The queue is created as durable (true) so it survives to broker restarts
+        // and exclusive (false) so it can be accessed by multiple consumers
+        // autoDelete: (false) means that the queue will not be deleted when the last consumer gets disconnected
+        return new Queue(this.visitorCountsAlertQueueName,
+            true,
+            false,
+            false
+        );
     }
 
     @Bean
@@ -34,7 +51,14 @@ public class RabbitMQConfig {
     public Binding visitorCountsBinding() {
         return BindingBuilder.bind(visitorCountsQueue())
                 .to(visitorCountsExchange())
-                .with(this.routingKey);
+                .with(this.visitorCountsRoutingKey);
+    }
+
+    @Bean
+    public Binding visitorCountsAlertBinding() {
+        return BindingBuilder.bind(visitorCountsAlertQueue())
+                .to(visitorCountsExchange())
+                .with(this.visitorCountsAlertRoutingKey);
     }
 
     @Bean
