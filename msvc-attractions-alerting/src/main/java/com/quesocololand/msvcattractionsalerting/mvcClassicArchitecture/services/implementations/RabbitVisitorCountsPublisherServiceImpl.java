@@ -1,7 +1,7 @@
-package com.quesocololand.msvcattractionsalerting.services.implementations;
+package com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.services.implementations;
 
-import com.quesocololand.msvcattractionsalerting.models.VisitorCount;
-import com.quesocololand.msvcattractionsalerting.services.abstractions.RabbitVisitorCountsPublisherService;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.dto.VisitorCountDTO;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.services.abstractions.RabbitVisitorCountsPublisherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -24,7 +24,7 @@ public class RabbitVisitorCountsPublisherServiceImpl implements RabbitVisitorCou
 
     //Methods of RabbitVisitorCountsPublisherServiceImpl
     @Override
-    public void publish(VisitorCount message) {
+    public void publishVisitorCount(VisitorCountDTO message) {
         log.info("Publishing some visitor counts into the queue");
 
         if (message.getRegisteredAt() == null) {

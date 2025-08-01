@@ -29,5 +29,5 @@ Details the tests that have been made in order to guarantee that the changes wor
 - [ ] No, this PR stands on its own.
 
 ## 🎯 Additional notes
-Add any piece of futher infomation you consider relevant.
+Add any piece of further information you consider relevant.
 

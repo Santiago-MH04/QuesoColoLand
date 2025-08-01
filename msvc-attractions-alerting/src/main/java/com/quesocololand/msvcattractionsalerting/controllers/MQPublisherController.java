@@ -1,7 +1,7 @@
 package com.quesocololand.msvcattractionsalerting.controllers;
 
-import com.quesocololand.msvcattractionsalerting.models.VisitorCount;
-import com.quesocololand.msvcattractionsalerting.services.abstractions.RabbitVisitorCountsPublisherService;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.dto.VisitorCountDTO;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.services.abstractions.RabbitVisitorCountsPublisherService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -36,7 +36,7 @@ public class MQPublisherController {
             required = true,
             content = @Content(
                 mediaType = "application/json",
-                schema = @Schema(implementation = VisitorCount.class)
+                schema = @Schema(implementation = VisitorCountDTO.class)
             )
         ),
         responses = {
@@ -50,8 +50,8 @@ public class MQPublisherController {
             )
         }
     )
-    public ResponseEntity<String> sendTestVisitorCountMessage(@RequestBody VisitorCount message) {
-        this.rabbitPublisherService.publish(message);
+    public ResponseEntity<String> sendTestVisitorCountMessage(@RequestBody VisitorCountDTO message) {
+        this.rabbitPublisherService.publishVisitorCount(message);
         return ResponseEntity.ok("Visitor counting message sent to RabbitMQ.");
     }
 }

@@ -1,4 +1,4 @@
-package com.quesocololand.msvcattractionsalerting.models.dto;
+package com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,7 +23,7 @@ public class VisitorCountAlert {
     private int totalCount;
     private int intervalMinutes;
     private AlertType alertType;
-    private String message;             // Mensaje descriptivo de la alerta (ej. "Atracción X está congestionada")
+    private String message;
 
     //Constructors of VisitorCountAlert
     //Field setters of VisitorCountAlert (setters)

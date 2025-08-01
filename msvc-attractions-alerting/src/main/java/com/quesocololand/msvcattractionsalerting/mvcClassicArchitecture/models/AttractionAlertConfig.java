@@ -1,4 +1,4 @@
-package com.quesocololand.msvcattractionsalerting.models;
+package com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

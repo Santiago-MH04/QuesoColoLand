@@ -1,6 +1,6 @@
-package com.quesocololand.msvcattractionsalerting.repositories;
+package com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.repositories;
 
-import com.quesocololand.msvcattractionsalerting.models.AttractionAlertConfig;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.AttractionAlertConfig;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;

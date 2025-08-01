@@ -1,7 +1,7 @@
 package com.quesocololand.msvcattractionsalerting.services;
 
-import com.quesocololand.msvcattractionsalerting.models.VisitorCount;
-import com.quesocololand.msvcattractionsalerting.services.implementations.RabbitVisitorCountsPublisherServiceImpl;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.dto.VisitorCountDTO;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.services.implementations.RabbitVisitorCountsPublisherServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -51,20 +51,20 @@ class RabbitPublisherServiceImplTest {
         int attendance = 100;
 
         // Entry message with registeredAt field null
-        VisitorCount message = VisitorCount.builder()
+        VisitorCountDTO message = VisitorCountDTO.builder()
             .attractionId(attractionId)
             .count(attendance)
             .registeredAt(null) // To verify this is assigned
             .build();
 
         // 2. Act
-        this.rabbitPublisherService.publish(message);
+        this.rabbitPublisherService.publishVisitorCount(message);
 
         // 3. Assert
         // Capture the arguments passed to convertAndSend
         ArgumentCaptor<String> exchangeCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<String> routingKeyCaptor = ArgumentCaptor.forClass(String.class);
-        ArgumentCaptor<VisitorCount> messageCaptor = ArgumentCaptor.forClass(VisitorCount.class);
+        ArgumentCaptor<VisitorCountDTO> messageCaptor = ArgumentCaptor.forClass(VisitorCountDTO.class);
 
         // Verify that convertAndSend was invoked exactly once
         verify(this.rabbitTemplate, times(1))
@@ -81,9 +81,9 @@ class RabbitPublisherServiceImplTest {
             assertThat(actualRoutingKey).startsWith("test_visitor_counts."); // Routing key prefix
             assertThat(actualRoutingKey).contains(attractionId); // Contiene el ID de la atracción
 
-        VisitorCount sentMessage = messageCaptor.getValue();
-            assertEquals(sentMessage.getAttractionId(), attractionId);
-            assertEquals(sentMessage.getCount(), attendance);
+        VisitorCountDTO sentMessage = messageCaptor.getValue();
+            assertEquals(attractionId, sentMessage.getAttractionId());
+            assertEquals(attendance, sentMessage.getCount());
             assertNotNull(sentMessage.getRegisteredAt()); // Verify a timestamp was assigned
     }
 
@@ -95,19 +95,19 @@ class RabbitPublisherServiceImplTest {
         LocalDateTime existingTimestamp = LocalDateTime.of(2025, 6, 1, 10, 30, 0);
 
         // Message with registeredAt already set
-        VisitorCount message = VisitorCount.builder()
+        VisitorCountDTO message = VisitorCountDTO.builder()
             .attractionId(attractionId)
             .count(attendance)
             .registeredAt(existingTimestamp)
             .build();
 
         // 2. Act
-        this.rabbitPublisherService.publish(message);
+        this.rabbitPublisherService.publishVisitorCount(message);
 
         // 3. Assert
         ArgumentCaptor<String> exchangeCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<String> routingKeyCaptor = ArgumentCaptor.forClass(String.class);
-        ArgumentCaptor<VisitorCount> messageCaptor = ArgumentCaptor.forClass(VisitorCount.class);
+        ArgumentCaptor<VisitorCountDTO> messageCaptor = ArgumentCaptor.forClass(VisitorCountDTO.class);
 
         verify(this.rabbitTemplate, times(1))
         .convertAndSend(
@@ -122,9 +122,9 @@ class RabbitPublisherServiceImplTest {
             assertThat(actualRoutingKey).startsWith("test_visitor_counts.");
             assertThat(actualRoutingKey).contains(attractionId);
 
-        VisitorCount sentMessage = messageCaptor.getValue();
-            assertEquals(sentMessage.getAttractionId(), attractionId);
-            assertEquals(sentMessage.getCount(), attendance);
+        VisitorCountDTO sentMessage = messageCaptor.getValue();
+            assertEquals(attractionId, sentMessage.getAttractionId());
+            assertEquals(attendance, sentMessage.getCount());
             assertEquals(sentMessage.getRegisteredAt(), existingTimestamp); // Verificar que no se cambió
     }
 
@@ -134,14 +134,14 @@ class RabbitPublisherServiceImplTest {
         int visitorCount = 200;
 
         // Message with attractionId null
-        VisitorCount message = VisitorCount.builder()
+        VisitorCountDTO message = VisitorCountDTO.builder()
             .attractionId(null) // To verify UUID logic
             .count(visitorCount)
             .registeredAt(LocalDateTime.now())
             .build();
 
         // 2. Act
-        this.rabbitPublisherService.publish(message);
+        this.rabbitPublisherService.publishVisitorCount(message);
 
         // 3. Assert
         ArgumentCaptor<String> routingKeyCaptor = ArgumentCaptor.forClass(String.class);
@@ -150,7 +150,7 @@ class RabbitPublisherServiceImplTest {
         .convertAndSend(
             eq(this.testExchangeName),
             routingKeyCaptor.capture(),
-            any(VisitorCount.class)
+            any(VisitorCountDTO.class)
         );
 
         String actualRoutingKey = routingKeyCaptor.getValue();
