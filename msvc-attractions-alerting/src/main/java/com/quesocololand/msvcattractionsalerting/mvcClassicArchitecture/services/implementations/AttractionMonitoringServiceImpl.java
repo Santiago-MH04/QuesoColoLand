@@ -1,11 +1,11 @@
-package com.quesocololand.msvcattractionsalerting.services.implementations;
+package com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.services.implementations;
 
-import com.quesocololand.msvcattractionsalerting.models.AttractionAlertConfig;
-import com.quesocololand.msvcattractionsalerting.models.VisitorCount;
-import com.quesocololand.msvcattractionsalerting.models.dto.VisitorCountAlert;
-import com.quesocololand.msvcattractionsalerting.repositories.AttractionAlertConfigRepository;
-import com.quesocololand.msvcattractionsalerting.repositories.VisitorCountRepository;
-import com.quesocololand.msvcattractionsalerting.services.abstractions.AttractionMonitoringService;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.AttractionAlertConfig;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.VisitorCount;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.dto.VisitorCountAlert;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.repositories.AttractionAlertConfigRepository;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.repositories.VisitorCountRepository;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.services.abstractions.AttractionMonitoringService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

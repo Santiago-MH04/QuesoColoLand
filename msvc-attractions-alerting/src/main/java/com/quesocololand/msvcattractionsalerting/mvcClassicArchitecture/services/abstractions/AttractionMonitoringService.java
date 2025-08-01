@@ -1,7 +1,7 @@
-package com.quesocololand.msvcattractionsalerting.services.abstractions;
+package com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.services.abstractions;
 
-import com.quesocololand.msvcattractionsalerting.models.AttractionAlertConfig;
-import com.quesocololand.msvcattractionsalerting.models.dto.VisitorCountAlert;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.AttractionAlertConfig;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.dto.VisitorCountAlert;
 
 import java.util.Optional;
 

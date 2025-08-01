@@ -1,6 +1,6 @@
-package com.quesocololand.msvcattractionsalerting.repositories;
+package com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.repositories;
 
-import com.quesocololand.msvcattractionsalerting.models.VisitorCount;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.VisitorCount;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;

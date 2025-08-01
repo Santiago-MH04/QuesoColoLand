@@ -1,7 +1,7 @@
 package com.quesocololand.msvcattractionsalerting.controllers;
 
-import com.quesocololand.msvcattractionsalerting.models.dto.VisitorCountDTO;
-import com.quesocololand.msvcattractionsalerting.services.abstractions.RabbitVisitorCountsPublisherService;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.dto.VisitorCountDTO;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.services.abstractions.RabbitVisitorCountsPublisherService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

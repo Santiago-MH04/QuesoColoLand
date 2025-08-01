@@ -1,7 +1,7 @@
 package com.quesocololand.msvcattractionsalerting.services;
 
-import com.quesocololand.msvcattractionsalerting.models.dto.VisitorCountDTO;
-import com.quesocololand.msvcattractionsalerting.services.implementations.RabbitVisitorCountsPublisherServiceImpl;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.models.dto.VisitorCountDTO;
+import com.quesocololand.msvcattractionsalerting.mvcClassicArchitecture.services.implementations.RabbitVisitorCountsPublisherServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
